@@ -1,46 +1,59 @@
-# Getting Started with Create React App
+# Nativewaves Work Sample Test (Web)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
 
-## Available Scripts
+**Time limit: 4 hours**.
 
-In the project directory, you can run:
+We want you to write custom video controls for the given video component (`<VideoPlayer/>`). With your custom implemented controls the user should be able to. 
 
-### `yarn start`
+### play / pause
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+A button that shows the `<Pause />` icon when the video is playing and the `<PlayArrow />` icon when the video is paused. When pressing the button the video should toggle between playing and pausing.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### mute / unmute
 
-### `yarn test`
+Similar to the play/pause button this button should toggle between mute and unmute the video. When unmuting but the volume is 0 it should set the volume to 100%. It should also show the `<VolumeOff />` icon when the video is muted and a different icons when unmuted depending on the volume value. (`<VolumeMute />` below 33,`<VolumeDown />` between 33 and 66, `<VolumeUp />` above 66)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### volume
+A Slider to control the volume. It should only be shown when the user hovers over the mute/unmute button.
 
-### `yarn build`
+### progress
+A `<LinearProgress />` element that shows the current progress of the video.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Additional Notes
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- We already added **material-ui** and **styled-components** that we use in our projects. Beside them you are allowed to use any library or tool that helps you reach your target. But make sure you can explain your decision during the code review.
+- All icons needed are provided by **material-ui/icons**
+- Use a reference to html video element to access video events and properties.
+- Change the `<VideoPlayer />` component as little as possible.
+- Use the `npm run example` command to see and precompiled solution at **localhost:5000**. 
+- If you have any questions feel free to contact Thomas Siller <ts@nativewaves.com> fia email or teams.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
+## Commands
+`npm start` starts the development server at localhost:3000
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+`npm lint` static analysis of the project source code
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+`npm run example` shows a precompiled solution localhost:5000. You can play around with it to get a better understanding how we want the controls to work, but don't try to decompile or access the code.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Evaluation Criteria
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+This is a list of criteria we will use to evaluate your assignment:
 
-## Learn More
+- Task Completion
+- Code Style
+- Architecture (e.g. Component Composition)
+- Performance Optimization
+- Lint Errors
+- Type Safety
+- Commits
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Submission
+When you are done:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- delete the node_modules folder
+- zip the project folder
+- send the zipped version to <ts@nativewaves.com>
+
+We will schedule a call to do a Code Review together.

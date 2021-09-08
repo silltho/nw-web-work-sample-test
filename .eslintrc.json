@@ -1,0 +1,42 @@
+{
+    "extends": [
+        "eslint:recommended",
+        "react-app",
+        "prettier",
+        "plugin:import/errors",
+        "plugin:import/warnings",
+        "plugin:import/typescript"
+      ],
+      "plugins": [
+        "prettier",
+        "import"
+      ],
+      "rules": {
+        "prettier/prettier": [
+          2,
+          {
+            "singleQuote": true,
+            "semi": false
+          }
+        ]
+      },
+      "settings": {
+        "import/resolver": {
+          "typescript": {
+            "project": "."
+          },
+          "node": {
+            "extensions": [".js", ".jsx", ".ts", ".tsx"],
+            "moduleDirectory": [
+              "node_modules",
+              "/src"
+            ]
+          }
+        },
+        "react": {
+          "pragma": "React",
+          "version": "detect"
+        }
+      },
+      "parser": "@typescript-eslint/parser"
+}

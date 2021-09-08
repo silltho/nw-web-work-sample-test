@@ -1,17 +1,27 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { StrictMode } from 'react'
+import { render } from 'react-dom'
+import { App } from 'components/App'
+import { CssBaseline } from '@material-ui/core'
+import {
+  StylesProvider,
+  ThemeProvider,
+  createTheme,
+} from '@material-ui/core/styles'
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+const theme = createTheme({
+  palette: {
+    type: 'dark',
+  },
+})
+
+render(
+  <StrictMode>
+    <StylesProvider injectFirst>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <App />
+      </ThemeProvider>
+    </StylesProvider>
+  </StrictMode>,
   document.getElementById('root')
-);
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+)
