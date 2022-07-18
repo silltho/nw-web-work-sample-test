@@ -1,6 +1,7 @@
 import { Typography } from '@material-ui/core'
+import { VideoControl } from 'components/VideoControl'
 import { VideoPlayer } from 'components/VideoPlayer'
-import { memo } from 'react'
+import { memo, useRef } from 'react'
 import styled from 'styled-components'
 
 const StyledApp = styled.div`
@@ -18,12 +19,15 @@ const StyledSpacer = styled.div`
 `
 
 export const AppRaw = () => {
+  const videoRef = useRef<HTMLVideoElement>(null)
+
   return (
     <StyledApp>
       <Typography variant="h3">Videoplayer Controls</Typography>
       <StyledSpacer />
-      <VideoPlayer />
+      <VideoPlayer ref={videoRef} />
       <StyledSpacer />
+      <VideoControl videoRef={videoRef} />
     </StyledApp>
   )
 }
