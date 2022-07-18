@@ -11,28 +11,43 @@ export type VolumeSliderProps = {
 export const VolumeSliderRaw = ({ videoRef }: VolumeSliderProps) => {
   const [volume, setVolume] = useState(1)
 
-  const handleVolumeChange = useCallback(() => {
+  const handleVolumeChangeEvent = useCallback(() => {
     if (videoRef.current) {
-      console.log(videoRef.current.volume)
-
-      setVolume(videoRef.current.volume)
+      setVolume(videoRef.current.volume * 100)
     }
   }, [videoRef])
+  const handleVolumeChangeElement = useCallback(
+    (event: any, newValue: number | number[]) => {
+      setVolume(newValue as number)
+      if (videoRef.current) {
+        videoRef.current.volume = volume / 100
+      }
+    },
+    [videoRef, volume]
+  )
+  const handleVolumeBlur = () => {
+    if (volume < 0) {
+      setVolume(0)
+    } else if (volume > 100) {
+      setVolume(100)
+    }
+  }
   useEffect(() => {
     const { current } = videoRef
-    current?.addEventListener('volumechange', handleVolumeChange)
+    current?.addEventListener('volumechange', handleVolumeChangeEvent)
     return () => {
-      current?.removeEventListener('volumechange', handleVolumeChange)
+      current?.removeEventListener('volumechange', handleVolumeChangeEvent)
     }
-  }, [handleVolumeChange, videoRef])
+  }, [handleVolumeChangeEvent, videoRef])
   return (
     <>
       <IconButton color="primary" aria-label="upload picture" component="span">
         <VolumeUp />
       </IconButton>
       <Slider
-        value={volume * 100}
-        onChange={handleVolumeChange}
+        onBlur={handleVolumeBlur}
+        value={volume}
+        onChange={handleVolumeChangeElement}
         aria-labelledby="continuous-slider"
       />
       <p>{volume}</p>
