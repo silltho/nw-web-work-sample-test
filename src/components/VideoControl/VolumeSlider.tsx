@@ -44,8 +44,6 @@ export const VolumeSliderRaw = ({ videoRef }: VolumeSliderProps) => {
   const [muted, setMuted] = useState(false)
   const [volume, setVolume] = useState(0)
 
-  //const storedVolume = useRef(0)
-
   const icon = useMemo(() => {
     if (muted || volume <= 0) {
       return <StyledVolumeOff />
